@@ -11,11 +11,17 @@ with a clean running [Chisel3](https://www.chisel-lang.org/) project.
 
 #### JDK 8 or newer
 
-We recommend LTS releases Java 8 and Java 11. You can install the JDK as recommended by your operating system, or use the prebuilt binaries from [AdoptOpenJDK](https://adoptopenjdk.net/).
+We recommend LTS releases Java 8 and Java 11. You can install the JDK as your operating system recommends, or use the prebuilt binaries from [AdoptOpenJDK](https://adoptopenjdk.net/).
 
-#### SBT
+#### SBT or mill
 
-SBT is the most common built tool in the Scala community. You can download it [here](https://www.scala-sbt.org/download.html).
+SBT is the most common build tool in the Scala community. You can download it [here](https://www.scala-sbt.org/download.html).  
+mill is another Scala/Java build tool without obscure DSL like SBT. You can download it [here](https://github.com/com-lihaoyi/mill/releases)
+
+#### Verilator
+
+The test with `svsim` needs Verilator installed.
+See Verilator installation instructions [here](https://verilator.org/guide/latest/install.html).
 
 ### How to get started
 
@@ -74,6 +80,11 @@ You can run the included test with:
 sbt test
 ```
 
+Alternatively, if you use Mill:
+```sh
+mill %NAME%.test
+```
+
 You should see a whole bunch of output that ends with something like the following lines
 ```
 [info] Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0
@@ -90,7 +101,7 @@ You are ready to go. We have a few recommended practices and things to do.
 * Package names should be clearly reflected in the testing hierarchy
 * Build tests for all your work
 * Read more about testing in SBT in the [SBT docs](https://www.scala-sbt.org/1.x/docs/Testing.html)
-* This template includes a [test dependency](https://www.scala-sbt.org/1.x/docs/Library-Dependencies.html#Per-configuration+dependencies) on [chiseltest](https://github.com/ucb-bar/chisel-testers2), this is a reasonable starting point for most tests
+* This template includes a [test dependency](https://www.scala-sbt.org/1.x/docs/Library-Dependencies.html#Per-configuration+dependencies) on [ScalaTest](https://www.scalatest.org/). This, coupled with `svsim` (included with Chisel) and `verilator`, are a starting point for testing Chisel generators.
   * You can remove this dependency in the build.sbt file if you want to
 * Change the name of your project in the build.sbt file
 * Change your README.md
