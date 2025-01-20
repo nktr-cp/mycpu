@@ -5,7 +5,7 @@
 name: Template Cleanup
 on:
   push:
-    branches: [main]
+    branches: [dummy] # Change this to the branch you want to test
 
 jobs:
   # Triggered on first push to repos created from the template
